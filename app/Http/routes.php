@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'AllkeysController@index');
+
+
+Route::resource('allkeys', 'AllkeysController', ['only' => ['index', 'show']]);
