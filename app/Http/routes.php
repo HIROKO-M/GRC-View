@@ -15,3 +15,5 @@ Route::get('/', 'AllkeysController@index');
 
 
 Route::resource('allkeys', 'AllkeysController', ['only' => ['index', 'show']]);
+
+Route::resource('pickupkeys', 'PickupkeysController', ['only' => ['index']]);

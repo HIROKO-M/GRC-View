@@ -17,7 +17,6 @@ class AllkeysController extends Controller
         $date = date('Y-m-d');
         $orders = Allkey::whereDate('check_date', '=', $date)-> paginate(20);    // gdates からcheck_date順に20個ずつ取り出し
 
-
         return view('allkeys.index', ['orders' => $orders,] );            // gdatas をTopページに表示
 
     }
@@ -25,7 +24,8 @@ class AllkeysController extends Controller
 
     public function show($id)
     {
-        
+  //      $site = Allkey::first();
+  //    return view('allkeys.show', ['site' => $site, ]);
     }
 
 

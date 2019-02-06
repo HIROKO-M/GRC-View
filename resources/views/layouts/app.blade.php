@@ -23,6 +23,8 @@
     <body>
         @include('commons.navbar')
         
+        @yield('keywords')
+        
         @yield('cover')
         
         <div class="container">
