@@ -3,7 +3,7 @@
         <div class="container">
             <div class="navbar-header">
                 
-                <h1>検索順位チェックツール　GRC</h1>
+                <a class="navbar-brand" href="/">検索順位チェックツール　GRC</a>
             </div>
         </div>
     </nav>
