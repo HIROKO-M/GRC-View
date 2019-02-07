@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class AllKey extends Model
 {
-    protected $table = 'gdatas';
+    protected $table = 'csvdatas';
 }

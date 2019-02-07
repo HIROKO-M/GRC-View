@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gdata extends Model
 {
-    protected $table = 'gdatas';
+    protected $table = 'csvdatas';
 
 
 
     protected $fillable = [
+        'check_date',
         'grc_site_name', 
         'grc_site_url', 
         'grc_keyword', 
@@ -18,7 +19,7 @@ class Gdata extends Model
         'y_change', 
         'y_count', 
         'y_url', 
-        'check_date',
+        
         ];
     
     public function keyword()
