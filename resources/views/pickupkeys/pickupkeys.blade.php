@@ -1,4 +1,5 @@
 @if(count($orders) > 0)
+
     <table class="table table-striped">
         <thead>
             <tr>
