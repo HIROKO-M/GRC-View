@@ -1,6 +1,25 @@
-@if(count($orders) > 0)
+<script>
+$(function () {
+    $('#datatables').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Japanese.json"
+        },
+        pageLength  : 500,
+        paging      : true,     // ページング機能 無効
+        lengthChange: false,    // 件数切替機能 無効
+        searching   : false,    // 検索機能 無効
+        ordering    : true,     // ソート機能 無効
 
-    <table class="table table-striped">
+        order: [],
+
+        scrollX: true,          // 横スクロールバーを有効にする
+        scrollY: 500            // 縦スクロールバーを有効にする ("500px"など「最大の高さ」を指定)
+    });
+});
+</script>
+
+@if(count($orders) > 0)
+    <table id="datatables"  class="table table-striped">
         <thead>
             <tr>
                 <th>チェックした日</th>
@@ -31,4 +50,5 @@
             {!! $orders->render() !!}
         </tbody>
     </table>
+
 @endif

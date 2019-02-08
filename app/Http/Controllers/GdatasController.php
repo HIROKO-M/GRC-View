@@ -104,7 +104,7 @@ class GdatasController extends Controller
  
     // DBに一括保存
     Gdata::insert($data);
-    
+
     $request->session()->flash('message', '登録したでござる');
     return redirect('showImportCSV');
     

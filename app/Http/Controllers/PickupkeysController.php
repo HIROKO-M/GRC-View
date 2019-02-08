@@ -14,11 +14,11 @@ class PickupkeysController extends Controller
     public function index()
     {
 
+
 // キーワードをcheckbox で複数選択する場合に利用。まだ不完全
 //        $pickupkeys = [];
 //        $pickupkeys[] = request()->pickupkey;
-//
-//        $orders = Allkey::orderBy('check_date', 'desc')->whereIn('grc_keyword', $request)-> paginate(20);    // gdates からcheck_date順に20個ずつ取り出し
+
 
 // キーワード選択一覧で利用
         $pickupkeys = request()->pickupkey;

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Gdata extends Model
 {
     protected $table = 'csvdatas';
+    
+    protected $primaryKey = ('check_date' & 'grc_keyword');
 
 
 

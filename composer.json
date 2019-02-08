@@ -9,7 +9,8 @@
         "laravel/framework": "5.1.*",
         "laravelcollective/html": "5.1.*",
         "thomaswelton/laravel-gravatar": "~1.0",
-        "goodby/csv": "*"
+        "goodby/csv": "*",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
