@@ -8,9 +8,6 @@ class Gdata extends Model
 {
     protected $table = 'csvdatas';
     
-    protected $primaryKey = ('check_date' & 'grc_keyword');
-
-
 
     protected $fillable = [
         'check_date',

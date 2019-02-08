@@ -29,6 +29,7 @@ class GdatasController extends Controller
  
      //postで受け取ったcsvファイルデータ
     $file = $request->file('file');
+
  
     //Goodby CSVのconfig設定
     $config = new LexerConfig();
@@ -50,16 +51,20 @@ class GdatasController extends Controller
  
     $data = array();
  
-
         // CSVのデータを配列化
         foreach ($rows as $key => $value) {
+                if($key == 0){
+                       continue;
+                }
             
             $arr = array();
             
             foreach ($value as $k => $v) {
-                
-                switch ($k) {
 
+                switch ($k) {
+                    
+                    
+                    
              	    case 0:
                     $arr['grc_site_name'] = $v;
                     break;
@@ -100,7 +105,7 @@ class GdatasController extends Controller
             $data[] = $arr;
 
         }
-    
+        
  
     // DBに一括保存
     Gdata::insert($data);

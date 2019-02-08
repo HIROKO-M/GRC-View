@@ -23,12 +23,16 @@ class PickupkeysController extends Controller
 // キーワード選択一覧で利用
         $pickupkeys = request()->pickupkey;
 
-        $orders = Allkey::orderBy('check_date', 'desc')->where('grc_keyword', $pickupkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
+        $date = date('Y-m-d');
+        $orders = Allkey::orderBy('id', 'desc')->where('grc_keyword', $pickupkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
 
 
 // 全てのデータ一覧で利用
+        //$key = Allkey::all()
+        
+        
         $date = date('Y-m-d');
-        $keys = Allkey::whereDate('check_date', '=', $date)-> paginate(20);    // gdates からcheck_date順に20個ずつ取り出し
+        $keys = Allkey::where('check_date', '=', $date)-> paginate(20);    // gdates からcheck_date順に20個ずつ取り出し
 
 
         return view('pickupkeys.index', [
