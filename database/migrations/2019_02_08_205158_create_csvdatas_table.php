@@ -18,10 +18,10 @@ class CreateCsvdatasTable extends Migration
             $table->string('grc_site_name');
             $table->string('grc_site_url');
             $table->string('grc_keyword');
-            $table->integer('y_rank')->unsigned()->index()->nullable();
+            $table->string('y_rank')->nullable();
             $table->string('y_change')->nullable();
             $table->integer('y_count')->unsigned()->index();
-            $table->string('y_url');
+            $table->string('y_url')->nullable();;
             $table->timestamps();
         });
     }
