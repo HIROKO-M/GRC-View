@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gdata extends Model
 {
-    protected $table = 'csvdatas';
+    protected $table = 'impdatas';
     
 
     protected $fillable = [

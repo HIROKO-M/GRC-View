@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCsvdatasTable extends Migration
+class CreateImpdatasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,16 @@ class CreateCsvdatasTable extends Migration
      */
     public function up()
     {
-        Schema::create('csvdatas', function (Blueprint $table) {
+        Schema::create('impdatas', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('check_date');
+            $table->string('check_date');
             $table->string('grc_site_name');
             $table->string('grc_site_url');
             $table->string('grc_keyword');
             $table->string('y_rank')->nullable();
             $table->string('y_change')->nullable();
             $table->integer('y_count')->unsigned()->index();
-            $table->string('y_url')->nullable();;
+            $table->string('y_url')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateCsvdatasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('csvdatas');
+        Schema::drop('impdatas');
     }
 }
