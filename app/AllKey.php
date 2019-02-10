@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class AllKey extends Model
 {
     protected $table = 'impdatas';
-    
+
+    public $timestamps = true;
 
     protected $fillable = [
         'check_date',

@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 
 use App\AllKey;
 
+use Carbon\Carbon;
+
 
 use Goodby\CSV\Import\Standard\Lexer;
 use Goodby\CSV\Import\Standard\Interpreter;
@@ -100,6 +102,10 @@ class GdatasController extends Controller
                 	default:
                 	break;
                 }
+                
+                $arr['created_at'] = Carbon::now();
+                $arr['updated_at'] = Carbon::now();
+                
             }
  
             $data[] = $arr;

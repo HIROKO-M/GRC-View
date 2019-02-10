@@ -10,7 +10,8 @@
         "laravelcollective/html": "5.1.*",
         "thomaswelton/laravel-gravatar": "~1.0",
         "goodby/csv": "*",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "nesbot/carbon": "^1.36"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
