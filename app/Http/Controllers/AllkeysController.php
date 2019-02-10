@@ -14,21 +14,15 @@ class AllkeysController extends Controller
 
     public function index()
     {
-        
-        $date = AllKey::orderBy('check_date', 'dec')->value('check_date');
-        
-        $orders = Allkey::where('check_date', '=', $date)-> paginate(20);    // gdates からcheck_date順に20個ずつ取り出し
+        $date = AllKey::orderBy('created_at', 'desc')->value('check_date');
+        $orders = Allkey::orderBy('created_at', 'desc')->where('check_date', '=', $date)-> paginate(20);    // gdates からcheck_date順に20個ずつ取り出し
 
-        return view('allkeys.index', ['orders' => $orders,] );            // gdatas をTopページに表示
+        return view('allkeys.index', [
+            'orders' => $orders,
+            'date' => $date,
+        ] );            // gdatas をTopページに表示
 
     }
-
-
-    public function show($id)
-    {
-  //      $site = Allkey::first();
-  //    return view('allkeys.show', ['site' => $site, ]);
-    }
-
+    
 
 }

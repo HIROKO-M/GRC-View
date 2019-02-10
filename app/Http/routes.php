@@ -13,6 +13,7 @@
 
 Route::get('/', 'AllkeysController@index');
 
+
 // GRC View側
 Route::resource('allkeys', 'AllkeysController', ['only' => ['index', 'show']]);
 
@@ -25,8 +26,4 @@ Route::resource('pickupkeys', 'PickupkeysController@index');
 
 Route::get('showImportCSV', 'GdatasController@showImportCSV')->name('gdatas.showImportCSV');
 Route::post('showImportCSV', 'GdatasController@importCSV');
-
-//Route::get('showimportKeyword', 'KeywordsController@showimportKeyword')->name('gdatas.showimportKeyword');
-//Route::post('showimportKeyword', 'KeywordsController@importKeyword');
-//Route::resource('keywords', 'KeywordsController');
 

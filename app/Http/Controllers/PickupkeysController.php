@@ -20,15 +20,13 @@ class PickupkeysController extends Controller
 //        $pickupkeys[] = request()->pickupkey;
 
 
+// キーワード選択で利用
+        $date = AllKey::orderBy('created_at', 'desc')->value('check_date');
+        $keys = Allkey::where('check_date', '=', $date)-> paginate(20);    // gdates からcheck_date順に20個ずつ取り出し
+
 // キーワード選択後の一覧表示で利用
         $pickupkeys = request()->pickupkey;
-        $orders = Allkey::orderBy('id', 'desc')->where('grc_keyword', $pickupkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
-
-
-// キーワード選択で利用
-        $date = AllKey::orderBy('check_date', 'dec')->value('check_date');
-        
-        $keys = Allkey::where('check_date', '=', $date)-> paginate(20);    // gdates からcheck_date順に20個ずつ取り出し
+        $orders = Allkey::orderBy('created_at', 'desc')->where('grc_keyword', $pickupkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
 
 
         return view('pickupkeys.index', [

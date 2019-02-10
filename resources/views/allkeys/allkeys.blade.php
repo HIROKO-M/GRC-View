@@ -1,3 +1,7 @@
+
+<h3>最終データ更新日：{{$date}}</h3>
+
+
 <script>
 $(function () {
     $('#datatables').DataTable({
@@ -53,3 +57,4 @@ $(function () {
         <p>CSVファイルをインポートしてください。</p>
         
         @endif
+        
