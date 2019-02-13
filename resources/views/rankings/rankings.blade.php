@@ -15,12 +15,12 @@
                     <td>{{ $r_order->check_date }}</td>
                     <td>{{ $r_order->grc_keyword }}</td>
                     <td>{{ $r_order->y_rank }}</td>
-                    
                 </tr>
+              
             @endforeach
                     
             {!! $r_orders->render() !!}
         </tbody>
     </table>
-
+    
 @endif

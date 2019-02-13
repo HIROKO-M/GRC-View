@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Collection;
-use App\AllKey;
+use App\Gdata;
 
 
 class PickupkeysController extends Controller
@@ -19,13 +19,13 @@ class PickupkeysController extends Controller
 
 // キーワードをcheckbox で複数選択する場合に利用。まだ不完全
         $checkkeys = $request->all();
-        $orders = Allkey::orderBy('created_at', 'desc')->whereIn('grc_keyword', $checkkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
+        $orders = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $checkkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
 
 
 
 // キーワード選択で利用
-        $date = AllKey::orderBy('created_at', 'desc')->value('check_date');
-        $keys = Allkey::where('check_date', '=', $date)-> paginate(20);    // gdates からcheck_date順に20個ずつ取り出し
+        $date = Gdata::orderBy('created_at', 'desc')->value('check_date');
+        $keys = Gdata::where('check_date', '=', $date)-> paginate(20);    // gdates からcheck_date順に20個ずつ取り出し
 
 // キーワード選択後の一覧表示で利用
 //        $pickupkeys = request()->pickupkey;

@@ -23,8 +23,5 @@ class Gdata extends Model
         
         ];
     
-    public function keyword()
-    {
-        return $this->belongsTo(Keyword::class);
-    }
+
 }

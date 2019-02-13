@@ -8,4 +8,6 @@
     
     {!! link_to_route('rankings.index', 'Pickup キーワード日別一覧ページへGo！', null, ['class' => 'btn btn-default']) !!}
     
+
+    
 @endsection

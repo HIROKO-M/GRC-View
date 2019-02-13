@@ -28,7 +28,6 @@
                     @foreach ($keys as $key)
                         <input type="checkbox" name="checkkey[]" value="{{$key->grc_keyword}}">{{ $key->grc_keyword }}
                     @endforeach
-                </select>
             </div>
             {!! Form::submit('検索') !!}
         {!! Form::close() !!}

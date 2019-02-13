@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\AllKey;
+use App\Gdata;
 
 use Carbon\Carbon;
 
@@ -114,7 +114,7 @@ class GdatasController extends Controller
         
  
     // DBに一括保存
-    AllKey::insert($data);
+    Gdata::insert($data);
 
     $request->session()->flash('message', '登録したでござる');
     return redirect('showImportCSV');
