@@ -21,6 +21,10 @@ Route::get('pickupkeys', 'PickupkeysController@index');
 Route::post('pickupkeys', 'PickupkeysController@pickupkeys');
 Route::resource('pickupkeys', 'PickupkeysController@index');
 
+Route::get('rankings', 'RankingsController@index');
+Route::post('rankings', 'RankingsController@rankings');
+Route::resource('rankings', 'RankingsController@index');
+
 
 // CSVインポート側
 

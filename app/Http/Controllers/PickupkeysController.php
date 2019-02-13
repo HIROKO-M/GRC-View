@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Collection;
 use App\AllKey;
+
 
 class PickupkeysController extends Controller
 {
@@ -16,11 +18,10 @@ class PickupkeysController extends Controller
 
 
 // キーワードをcheckbox で複数選択する場合に利用。まだ不完全
-        $checkedkeys = $request->all();
-//        $cnt = count($checkedkeys);
-//        for($i = 0 ; $i < count($checkedkeys); $i++){
-            $orders = Allkey::orderBy('created_at', 'desc')->whereIn('grc_keyword', $checkedkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
-//        }
+        $checkkeys = $request->all();
+        $orders = Allkey::orderBy('created_at', 'desc')->whereIn('grc_keyword', $checkkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
+
+
 
 // キーワード選択で利用
         $date = AllKey::orderBy('created_at', 'desc')->value('check_date');
@@ -34,7 +35,7 @@ class PickupkeysController extends Controller
         return view('pickupkeys.index', [
             'orders' => $orders,
             'keys' => $keys,
-
+            'checkkeys' => $checkkeys,
         ]);
         
     }

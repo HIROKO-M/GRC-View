@@ -36,15 +36,15 @@
     </div>
     
     
-    @include('pickupkeys.pickupkeys', ['orders' => $orders,])
+    @include('rankings.rankings', ['r_orders' => $r_orders,])
     
 <pre>
     <?php
-    var_dump($checkkeys);
-    var_dump($orders);
+    var_dump($selkeys);
+    var_dump($r_orders);
     ?>
 </pre>
 
 
-    {!! $orders->render() !!}
+    {!! $r_orders->render() !!}
 @endsection

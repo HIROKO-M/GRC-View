@@ -2,6 +2,7 @@
 <h3>最終データ更新日：{{$date}}</h3>
 
 
+
 <script>
 $(function () {
     $('#datatables').DataTable({
@@ -16,7 +17,7 @@ $(function () {
 
         "order": [],
 
-        scrollX: true,
+        scrollX: 600,
         scrollY: 200
     });
 });
@@ -27,12 +28,16 @@ $(function () {
                 <thead>
                     <tr>
                         <th>サイト名</th>
-                        <th>サイトURL</th>
+                        <!-- <th>サイトURL</th> -->
                         <th>検索キーワード</th>
                         <th>Yahoo順位</th>
                         <th>Yahoo変化</th>
                         <th>Yahoo件数</th>
                         <th>Yahoo URL</th>
+                        <th>Google順位</th>
+                        <th>Google変化</th>
+                        <th>Google件数</th>
+                        <th>Google URL</th>
                     </tr>
                 </thead>
             
@@ -40,12 +45,16 @@ $(function () {
                     @foreach ($orders as $order)
                         <tr>
                             <td>{{ $order->grc_site_name }}</td>
-                            <td>{{ $order->grc_site_url }}</td>
+                        <!--<td>{{ $order->grc_site_url }}</td> -->
                             <td>{{ $order->grc_keyword }}</td>
                             <td>{{ $order->y_rank }}</td>
                             <td>{{ $order->y_change }}</td>
                             <td>{{ $order->y_count }}</td>
                             <td>{{ $order->y_url }}</td>
+                            <td>{{ $order->g_rank }}</td>
+                            <td>{{ $order->g_change }}</td>
+                            <td>{{ $order->g_count }}</td>
+                            <td>{{ $order->g_url }}</td>
                         </tr>
                     @endforeach
                     
@@ -57,4 +66,3 @@ $(function () {
         <p>CSVファイルをインポートしてください。</p>
         
         @endif
-        
