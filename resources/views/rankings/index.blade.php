@@ -53,14 +53,17 @@ $checkday_array = $checkeddays;
 $yranks_array = array();
 $yranks_array = $yranks;
 
-//$data_list = [3,19,21,9,16,7,11];
+$data_list = [3,19,21,9,16,7,11];
 ?>
 
 <pre>
     <?php
-    var_dump($selkeys);
-    print_r($checkeddays);
-    var_dump ($yranks);
+    // var_dump($selkeys);
+    // var_dump($checkeddays);
+    // print_r($checkeddays);
+    // var_dump($yranks);
+    var_dump($data_list);
+    var_dump($debug);
     ?>
 </pre>
 
@@ -76,12 +79,12 @@ var chart = new Chart(ctx, {
 
     // The data for our dataset
     data: {
-        labels: day, //check_dateの値をx軸として表示されるようにしたい
+        labels: [1,2,3,4,5,6,7], //check_dateの値をx軸として表示されるようにしたい
         datasets: [{
             label: "My First dataset",
             backgroundColor: 'rgb(255, 255, 255)',
             borderColor: 'rgb(255, 99, 132)',
-            data: yranking,
+            data: [3,19,21,9,16,7,11],
             fill: false,
         }]
     },
