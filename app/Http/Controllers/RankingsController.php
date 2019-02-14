@@ -24,6 +24,7 @@ class RankingsController extends Controller
         $selkeys = $request->all();
         $r_orders = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
 
+        $selkey = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)->value('grc_keyword');
 
 
 // キーワード選択で利用
@@ -46,20 +47,23 @@ class RankingsController extends Controller
         }
         
         
-        
-        $hoge = array();
+        $g_array = array();
+        $y_array = array();
         foreach($yranks as $yrank) {
-            array_push($hoge, $yrank->y_rank);
+            array_push($y_array, $yrank->y_rank);
+            array_push($g_array, $yrank->g_rank);
         }
         
-        $yranks = array_map(function($value){ return (int)$value; }, $hoge);
+        $yranks = array_map(function($value){ return (int)$value; }, $y_array);
+        $granks = array_map(function($value){ return (int)$value; }, $g_array);
         
         return view('rankings.index', [
             'r_orders' => $r_orders,
             'keys' => $keys,
-            'selkeys' => $selkeys,
             'yranks' => $yranks,
+            'granks' => $granks,
             'checkeddays' => $huga,
+            'selkey' => $selkey,
         ]);
         
     }

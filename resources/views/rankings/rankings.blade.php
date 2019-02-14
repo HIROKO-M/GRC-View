@@ -1,3 +1,6 @@
+
+
+
 @if(count($r_orders) > 0)
     <table id="datatables"  class="table table-striped">
         <thead>

@@ -1,3 +1,6 @@
+<h3>キーワード：{{$checkkeys}}</h3>
+
+
 <script>
 $(function () {
     $('#datatables').DataTable({
@@ -24,10 +27,10 @@ $(function () {
     <table id="datatables"  class="table table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>チェックした日</th>
+                <th>日付</th>
                 <th>サイト名</th>
                 <!--<th>サイトURL</th>-->
-                <th width=40%>検索キーワード</th>
+                <!--<th>検索キーワード</th>-->
                 <th>Yahoo順位</th>
                 <th>Yahoo変化</th>
                 <th>Yahoo件数</th>
@@ -45,7 +48,7 @@ $(function () {
                     <td>{{ $order->check_date }}</td>
                     <td>{{ $order->grc_site_name }}</td>
                     <!--<td>{{ $order->grc_site_url }}</td>-->
-                    <td width=40%>{{ $order->grc_keyword }}</td>
+                    <!--<td>{{ $order->grc_keyword }}</td>-->
                     <td>{{ $order->y_rank }}</td>
                     <td>{{ $order->y_change }}</td>
                     <td>{{ $order->y_count }}</td>

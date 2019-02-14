@@ -3,10 +3,7 @@
 @section('content')
 
   <div id="wrapper" class="clearfix">
-    <div id="main">
-            @include('pickupkeys.pickupkeys', ['orders' => $orders,])
-    </div>
-
+    
     <aside id="sidebar">
 
         {{-- スクロール表示　--}}
@@ -39,7 +36,13 @@
                     </div>
                 {!! Form::close() !!}
         --}}     
-    </aside>
+    </aside>  
+      
+    <div id="main">
+            @include('pickupkeys.pickupkeys', ['orders' => $orders,])
+    </div>
+
+
   </div> 
 
     {!! $orders->render() !!}
