@@ -95,10 +95,26 @@ class GdatasController extends Controller
                 	$arr['y_url'] = $v;
                 	break;
  
-                  	case 7:
+                    case 7:
+                	$arr['g_rank'] = $v;
+                	break;
+ 
+                 	case 8:
+                	$arr['g_change'] = $v;
+                	break;
+ 
+                 	case 9:
+                	$arr['g_count'] = $v;
+                	break;
+ 
+                 	case 10:
+                	$arr['g_url'] = $v;
+                	break;
+
+                  	case 11:
                 	$arr['check_date'] = $v;
                 	break;
-            	
+                	
                 	default:
                 	break;
                 }

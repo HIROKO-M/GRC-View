@@ -2,10 +2,15 @@
 
 @section('content')
 
-   <div class="row">
-{{-- スクロール表示　--}}
-{{--
-        <aside class="col-xs-4">
+  <div id="wrapper" class="clearfix">
+    <div id="main">
+            @include('pickupkeys.pickupkeys', ['orders' => $orders,])
+    </div>
+
+    <aside id="sidebar">
+
+        {{-- スクロール表示　--}}
+
         {!! Form::open(['method' => 'post']) !!}
         {{ csrf_field() }}
             <div class="form-group">
@@ -17,33 +22,25 @@
             </div>
             {!! Form::submit('検索') !!}
         {!! Form::close() !!}
-        </aside>
---}}        
 
-{{-- チェックボックス表示　--}}
-        <aside class="col-xs-4">
-        {!! Form::open(['method' => 'post']) !!}
-        {{ csrf_field() }}
-            <div class="form-group">
-                    @foreach ($keys as $key)
-                        <input type="checkbox" name="checkkey[]" value="{{$key->grc_keyword}}">{{ $key->grc_keyword }}
-                    @endforeach
-            </div>
-            {!! Form::submit('検索') !!}
-        {!! Form::close() !!}
-        </aside>
-    </div>
-    
-    
-    @include('pickupkeys.pickupkeys', ['orders' => $orders,])
-    
-<pre>
-    <?php
-    var_dump($checkkeys);
-    var_dump($orders);
-    ?>
-</pre>
+   
 
+        {{-- チェックボックス表示　--}}
+        {{--
+                {!! Form::open(['method' => 'post']) !!}
+                {{ csrf_field() }}
+                    {!! Form::submit('検索') !!}
+                    <div class="form-group">
+                        <ol>
+                            @foreach ($keys as $key)
+                                <li><input type="checkbox" name="checkkey[]" value="{{$key->grc_keyword}}">{{ $key->grc_keyword }}</li>
+                            @endforeach
+                        </ol>
+                    </div>
+                {!! Form::close() !!}
+        --}}     
+    </aside>
+  </div> 
 
     {!! $orders->render() !!}
 @endsection

@@ -5,6 +5,7 @@
                 <th>チェックした日</th>
                 <th>検索キーワード</th>
                 <th>Yahoo順位</th>
+                <th>Google順位</th>
                 
             </tr>
         </thead>
@@ -15,6 +16,7 @@
                     <td>{{ $r_order->check_date }}</td>
                     <td>{{ $r_order->grc_keyword }}</td>
                     <td>{{ $r_order->y_rank }}</td>
+                    <td>{{ $r_order->g_rank }}</td>
                 </tr>
               
             @endforeach

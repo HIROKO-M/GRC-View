@@ -17,14 +17,14 @@ $(function () {
 
         "order": [],
 
-        scrollX: 600,
-        scrollY: 200
+        scrollX: 730,
+        scrollY: 300
     });
 });
 </script>
 
         @if(count($orders) > 0)
-            <table id="datatables" class="table table-striped">
+            <table id="datatables" class="table table-striped" width="100%">
                 <thead>
                     <tr>
                         <th>サイト名</th>
@@ -33,11 +33,11 @@ $(function () {
                         <th>Yahoo順位</th>
                         <th>Yahoo変化</th>
                         <th>Yahoo件数</th>
-                        <th>Yahoo URL</th>
+                        <!-- <th>Yahoo URL</th> -->
                         <th>Google順位</th>
                         <th>Google変化</th>
                         <th>Google件数</th>
-                        <th>Google URL</th>
+                        <!-- <th>Google URL</th> -->
                     </tr>
                 </thead>
             
@@ -50,11 +50,11 @@ $(function () {
                             <td>{{ $order->y_rank }}</td>
                             <td>{{ $order->y_change }}</td>
                             <td>{{ $order->y_count }}</td>
-                            <td>{{ $order->y_url }}</td>
+                            <!-- <td>{{ $order->y_url }}</td> -->
                             <td>{{ $order->g_rank }}</td>
                             <td>{{ $order->g_change }}</td>
                             <td>{{ $order->g_count }}</td>
-                            <td>{{ $order->g_url }}</td>
+                            <!-- <td>{{ $order->g_url }}</td> -->
                         </tr>
                     @endforeach
                     
