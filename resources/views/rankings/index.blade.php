@@ -36,41 +36,31 @@
     </div>
     
     
-    @include('rankings.rankings', ['r_orders' => $r_orders,])
+{{--    @include('rankings.rankings', ['r_orders' => $r_orders,])　--}}
 
 
 <div class="chart">
-<h1>Chart.jsのテスト</h1>
+<h3>{{$key->grc_keyword}}のRanking Chart</h3>
 
 <canvas id="myChart" width="600" height="100"></canvas>
         
-        
-<?php 
 
-$checkday_array = array();
-$checkday_array = $checkeddays;
-
-$yranks_array = array();
-$yranks_array = $yranks;
-
-$data_list = [3,19,21,9,16,7,11];
-?>
-
-<pre>
+<!--<pre>
     <?php
-    // var_dump($selkeys);
-    // var_dump($checkeddays);
-    // print_r($checkeddays);
-    // var_dump($yranks);
-    var_dump($data_list);
-    var_dump($debug);
+    
+    var_dump($selkeys);
+
+    var_dump($yranks);
+    var_dump($checkeddays);
+    
+    
     ?>
-</pre>
+</pre>-->
 
 
 <script>
-var day = JSON.parse('<?php echo json_encode($checkday_array); ?>');
-var yranking= JSON.parse('<?php echo json_encode($yranks_array); ?>');
+var day= JSON.parse('<?php echo json_encode($checkeddays); ?>');
+var yranking= JSON.parse('<?php echo json_encode($yranks); ?>');
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
@@ -79,13 +69,14 @@ var chart = new Chart(ctx, {
 
     // The data for our dataset
     data: {
-        labels: [1,2,3,4,5,6,7], //check_dateの値をx軸として表示されるようにしたい
+        labels: day, //check_dateの値をx軸として表示されるようにしたい
         datasets: [{
-            label: "My First dataset",
+            label: "Yahoo Ranking",
             backgroundColor: 'rgb(255, 255, 255)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [3,19,21,9,16,7,11],
+            data: yranking,
             fill: false,
+            lineTension: 0,             // ペルジェ曲線→直線
         }]
     },
 
@@ -95,11 +86,7 @@ var chart = new Chart(ctx, {
             yAxes: [{
                 ticks: {
                   reverse: true, //y軸の反転(1位を上にして昇順で表示)
-                  min: 1,  //最小値を1に
-                  max: 10,  //最大値を10に
-                  callback: function(value){
-                     return value+'位';  //labelに「〜位」をつける
-                  }
+                  
                 }
             }]
         }
