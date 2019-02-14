@@ -11,19 +11,19 @@
 |
 */
 
-Route::get('/', 'AllkeysController@index');
-
-
 // GRC View側
-Route::resource('allkeys', 'AllkeysController', ['only' => ['index', 'show']]);
+Route::get('/', 'AllkeysController@index');
+Route::post('/', 'AllkeysController@index');
+Route::resource('/', 'AllkeysController@index');
 
 Route::get('pickupkeys', 'PickupkeysController@index');
 Route::post('pickupkeys', 'PickupkeysController@pickupkeys');
 Route::resource('pickupkeys', 'PickupkeysController@index');
 
-Route::get('rankings', 'RankingsController@index');
-Route::post('rankings', 'RankingsController@rankings');
-Route::resource('rankings', 'RankingsController@index');
+//Route::get('rankings', 'RankingsController@index');
+//Route::post('rankings', 'RankingsController@rankings');
+//Route::resource('rankings', 'RankingsController@index');
+
 
 
 // CSVインポート側

@@ -2,10 +2,10 @@
 
 @section('content')
 
-   <div class="row">
+<div id="wrapper" class="clearfix">
+    <aside id="sidebar">
+    {{-- チェックボックス表示　--}}
 
-{{-- チェックボックス表示　--}}
-        <aside class="col-xs-4">
         {!! Form::open(['method' => 'post']) !!}
         {{ csrf_field() }}
             <div class="form-group">
@@ -15,8 +15,8 @@
             </div>
             {!! Form::submit('検索') !!}
         {!! Form::close() !!}
-        </aside>
-    </div>
+    </aside>
+</div>
     
     
     @include('rankings.rankings', ['r_orders' => $r_orders,])
@@ -28,8 +28,8 @@
 <canvas id="myChart" width="600" height="100"></canvas>
         
 
-<pre>
-    <?php
+<!--pre>
+    < ?php
     
     var_dump($selkey);
     var_dump($granks);
@@ -38,7 +38,7 @@
     
     
     ?>
-</pre>
+</pre-->
 
 
 <script>

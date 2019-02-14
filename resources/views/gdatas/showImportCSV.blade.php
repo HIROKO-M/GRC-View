@@ -10,6 +10,8 @@
         </div>
         {!! Form::submit('CSVファイル読み込み', ['class' => 'btn btn-success']) !!}
     {!! Form::close() !!}
+<br>
+<br>
 
     @if(Session::has('message'))
       {{ session('message') }}
