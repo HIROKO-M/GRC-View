@@ -30,12 +30,25 @@
 <h3>キーワード：{{$selkey}}</h3>
 
 <div class="chart">
+    
+<!--    <pre>
+        < ?php
+            var_dump($yranks);
+
+            $data_list = [1,2,3,4];
+            
+            var_dump($data_list);
+
+        ?>
+    </pre>
+-->
 
 <canvas id="myChart" width="600" height="100"></canvas>
 <script>
 var day= JSON.parse('<?php echo json_encode($checkeddays); ?>');
-var yranking= JSON.parse('<?php echo json_encode($yranks); ?>');
+
 var granking= JSON.parse('<?php echo json_encode($granks); ?>');
+var yranking= JSON.parse('<?php echo json_encode($yranks); ?>');
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
@@ -64,15 +77,17 @@ var chart = new Chart(ctx, {
     },
 
     // Configuration options go here
-    options:  {
+    options: {
         scales: {
             yAxes: [{
-                type: "linear",
                 ticks: {
-                    reverse: true, //y軸の反転(1位を上にして昇順で表示)
+                    reverse: true,//reverse: true, //y軸の反転(1位を上にして昇順で表示)
                     max: 10,
                     min: 0,
                     stepSize: 1,
+                    callback: function(value){
+                     return value+'位';  //labelに「〜位」をつける
+                    } 
                 }
             }],
             xAxes: [{
@@ -86,6 +101,6 @@ var chart = new Chart(ctx, {
 </script>
 </div>
 
-{!! $r_orders->render() !!}
+
 @endsection
 

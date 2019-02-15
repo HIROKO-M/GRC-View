@@ -16,19 +16,19 @@ class AllkeysController extends Controller
     {
 //最新データの一覧表
         $date = Gdata::orderBy('created_at', 'desc')->value('check_date');
-        $orders = Gdata::orderBy('created_at', 'desc')->where('check_date', '=', $date)-> paginate(20);    // gdates からcheck_date順に20個ずつ取り出し
+        $orders = Gdata::orderBy('created_at', 'desc')->where('check_date', '=', $date)->get();    // gdates からcheck_date順に取り出し
 
 
 // キーワードをcheckbox で複数選択する場合に利用。まだ不完全
         $selkeys = $request->all();
-        $r_orders = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
+//        $r_orders = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
 
         $selkey = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)->value('grc_keyword');
 
 
 // キーワード選択で利用
         //$date = Gdata::orderBy('created_at', 'desc')->value('check_date');
-        $keys = Gdata::where('check_date', '=', $date)-> paginate(20);    // gdates からcheck_date順に20個ずつ取り出し
+        $keys = Gdata::where('check_date', '=', $date)->get();    // gdates からcheck_date順に取り出し
 
         $checkeddays = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->groupBy('check_date')->get();
         $yranks = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)->get();
@@ -56,11 +56,12 @@ class AllkeysController extends Controller
         $yranks = array_map(function($value){ return (int)$value; }, $y_array);
         $granks = array_map(function($value){ return (int)$value; }, $g_array);
         
+//error_log(var_dump($yranks));
 
         return view('allkeys.index', [
             'orders' => $orders,
             'date' => $date,
-            'r_orders' => $r_orders,
+            //'r_orders' => $r_orders,
             'keys' => $keys,
             'yranks' => $yranks,
             'granks' => $granks,

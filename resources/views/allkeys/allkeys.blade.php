@@ -12,7 +12,7 @@ $(function () {
         'pageLength'  : 50,
         'paging'      : true,
         'lengthChange': false,
-        'searching': false,
+        'searching': true,
         'ordering': true,
 
         "order": [],
@@ -58,7 +58,6 @@ $(function () {
                         </tr>
                     @endforeach
                     
-                    {!! $orders->render() !!}
                 </tbody>
             </table>
         @else
