@@ -14,16 +14,17 @@
 <div id="wrapper" class="clearfix">
     <aside id="sidebar">
     {{-- チェックボックス表示　--}}
-
+    {{--
         {!! Form::open(['method' => 'post']) !!}
         {{ csrf_field() }}
             <div class="form-group">
-                    @foreach ($keys as $key)
+                    @foreach ($orders as $order)
                         <input type="checkbox" name="checkkey" value="{{$key->grc_keyword}}">{{ $key->grc_keyword }}
                     @endforeach
             </div>
             {!! Form::submit('検索') !!}
         {!! Form::close() !!}
+    　--}}
     </aside>
 </div>
 
@@ -31,17 +32,7 @@
 
 <div class="chart">
     
-<!--    <pre>
-        < ?php
-            var_dump($yranks);
-
-            $data_list = [1,2,3,4];
-            
-            var_dump($data_list);
-
-        ?>
-    </pre>
--->
+ 
 
 <canvas id="myChart" width="600" height="100"></canvas>
 <script>
@@ -65,13 +56,16 @@ var chart = new Chart(ctx, {
             data: yranking,
             fill: false,
             lineTension: 0,             // ペルジェ曲線→直線
-            }, {
+            spanGaps: false,
+            }, 
+            {
             label: "Google Ranking",
             backgroundColor: 'rgb(255, 255, 255)',
             borderColor: 'rgb(54, 162, 235)',
             data: granking,
             fill: false,
             lineTension: 0,             // ペルジェ曲線→直線
+            spanGaps: false,
         }
         ]
     },
@@ -83,7 +77,7 @@ var chart = new Chart(ctx, {
                 ticks: {
                     reverse: true,//reverse: true, //y軸の反転(1位を上にして昇順で表示)
                     max: 10,
-                    min: 0,
+                    min: 1,
                     stepSize: 1,
                     callback: function(value){
                      return value+'位';  //labelに「〜位」をつける

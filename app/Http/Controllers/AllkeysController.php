@@ -20,15 +20,14 @@ class AllkeysController extends Controller
 
 
 // キーワードをcheckbox で複数選択する場合に利用。まだ不完全
-        $selkeys = $request->all();
-//        $r_orders = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
+        $selkeys = $request -> all();
 
         $selkey = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)->value('grc_keyword');
 
+        error_log(var_dump($date));
+        error_log(var_dump($selkey));
 
-// キーワード選択で利用
-        //$date = Gdata::orderBy('created_at', 'desc')->value('check_date');
-        $keys = Gdata::where('check_date', '=', $date)->get();    // gdates からcheck_date順に取り出し
+// ランキング表示のためのキーワード選択で利用
 
         $checkeddays = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->groupBy('check_date')->get();
         $yranks = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)->get();
@@ -37,6 +36,7 @@ class AllkeysController extends Controller
         // })->all();
         
         // error_log(var_dump($yranks->toArray()));
+
         
         
         // これでとりあえず配列に出来る。（スマートとは言えないが）
@@ -56,15 +56,16 @@ class AllkeysController extends Controller
         $yranks = array_map(function($value){ return (int)$value; }, $y_array);
         $granks = array_map(function($value){ return (int)$value; }, $g_array);
         
+        $yranks_rep = str_replace('0', '100', $yranks);
+        $granks_rep = str_replace('0', '100', $granks);
+        
 //error_log(var_dump($yranks));
 
         return view('allkeys.index', [
             'orders' => $orders,
             'date' => $date,
-            //'r_orders' => $r_orders,
-            'keys' => $keys,
-            'yranks' => $yranks,
-            'granks' => $granks,
+            'yranks' => $yranks_rep,
+            'granks' => $granks_rep,
             'checkeddays' => $huga,
             'selkey' => $selkey,
         ]);

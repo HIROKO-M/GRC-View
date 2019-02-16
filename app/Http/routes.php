@@ -14,6 +14,8 @@
 // GRC View側
 Route::get('/', 'AllkeysController@index');
 Route::post('/', 'AllkeysController@index');
+Route::get('/', 'AllkeysController@allkeys');
+Route::post('/', 'AllkeysController@allkeys');
 Route::resource('/', 'AllkeysController@index');
 
 Route::get('pickupkeys', 'PickupkeysController@index');

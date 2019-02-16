@@ -25,7 +25,7 @@ class PickupkeysController extends Controller
 
 // キーワード選択で利用
         $date = Gdata::orderBy('created_at', 'desc')->value('check_date');
-        $keys = Gdata::where('check_date', '=', $date)->get();    // gdates からcheck_date順に取り出し
+        $keys = Gdata::orderBy('grc_keyword', 'desc')->where('check_date', '=', $date)->get();    // gdates からcheck_date順に取り出し
 
 // キーワード選択後の一覧表示で利用
         $pickupkeys = request()->pickupkey;
