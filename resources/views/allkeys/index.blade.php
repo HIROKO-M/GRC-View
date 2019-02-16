@@ -6,40 +6,21 @@
     
     {!! link_to_route('pickupkeys.index', 'Pickup キーワード詳細ページへGo！', null, ['class' => 'btn btn-primary']) !!}
     
-    {{-- {!! link_to_route('rankings.index', 'Pickup キーワード日別一覧ページへGo！', null, ['class' => 'btn btn-default']) !!}--}}
-
 <br>
 <br>
-   
-<div id="wrapper" class="clearfix">
-    <aside id="sidebar">
-    {{-- チェックボックス表示　--}}
-    {{--
-        {!! Form::open(['method' => 'post']) !!}
-        {{ csrf_field() }}
-            <div class="form-group">
-                    @foreach ($orders as $order)
-                        <input type="checkbox" name="checkkey" value="{{$key->grc_keyword}}">{{ $key->grc_keyword }}
-                    @endforeach
-            </div>
-            {!! Form::submit('検索') !!}
-        {!! Form::close() !!}
-    　--}}
-    </aside>
-</div>
 
 <h3>キーワード：{{$selkey}}</h3>
 
 <div class="chart">
     
- 
+
 
 <canvas id="myChart" width="600" height="100"></canvas>
 <script>
 var day= JSON.parse('<?php echo json_encode($checkeddays); ?>');
 
-var granking= JSON.parse('<?php echo json_encode($granks); ?>');
-var yranking= JSON.parse('<?php echo json_encode($yranks); ?>');
+var granking= JSON.parse('<?php echo json_encode($granks_rep); ?>');
+var yranking= JSON.parse('<?php echo json_encode($yranks_rep); ?>');
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {

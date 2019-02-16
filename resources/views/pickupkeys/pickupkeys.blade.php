@@ -1,5 +1,7 @@
-<h3>キーワード：{{$checkkeys}}</h3>
 
+<h5>サイト名：{{$site_name}}</h5>
+    
+<h5>キーワード：{{$checkkeys}}</h5>
 
 <script>
 $(function () {
@@ -17,8 +19,8 @@ $(function () {
 
 //        scrollX: true,          // 横スクロールバーを有効にする
 //        scrollY: 500,            // 縦スクロールバーを有効にする ("500px"など「最大の高さ」を指定)
-        scrollX: 730,
-        scrollY: 300
+        scrollX: true,
+        scrollY: false
     });
 });
 </script>
@@ -28,7 +30,7 @@ $(function () {
         <thead>
             <tr>
                 <th>日付</th>
-                <th>サイト名</th>
+                <!--<th>サイト名</th>-->
                 <!--<th>サイトURL</th>-->
                 <!--<th>検索キーワード</th>-->
                 <th>Yahoo順位</th>
@@ -46,7 +48,7 @@ $(function () {
             @foreach ($orders as $order)
                 <tr>
                     <td>{{ $order->check_date }}</td>
-                    <td>{{ $order->grc_site_name }}</td>
+                    <!--<td>{{ $order->grc_site_name }}</td>-->
                     <!--<td>{{ $order->grc_site_url }}</td>-->
                     <!--<td>{{ $order->grc_keyword }}</td>-->
                     <td>{{ $order->y_rank }}</td>

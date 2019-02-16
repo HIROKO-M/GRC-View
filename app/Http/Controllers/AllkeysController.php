@@ -14,23 +14,26 @@ class AllkeysController extends Controller
 
     public function index(Request $request)
     {
+
+
 //最新データの一覧表
         $date = Gdata::orderBy('created_at', 'desc')->value('check_date');
         $orders = Gdata::orderBy('created_at', 'desc')->where('check_date', '=', $date)->get();    // gdates からcheck_date順に取り出し
 
 
-// キーワードをcheckbox で複数選択する場合に利用。まだ不完全
+// キーワードを選択する場合に利用。まだ不完全
         $selkeys = $request -> all();
-
         $selkey = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)->value('grc_keyword');
 
-        error_log(var_dump($date));
-        error_log(var_dump($selkey));
+//        error_log(var_dump($date));
+//        error_log(var_dump($selkey));
+//        error_log(var_dump($selkeys));
 
-// ランキング表示のためのキーワード選択で利用
+ 
+        // ランキング表示のためのキーワード選択で利用
 
         $checkeddays = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->groupBy('check_date')->get();
-        $yranks = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)->get();
+        $yranks = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->get();
         // $yranks = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)->get()->map(function ($item, $key) {
         //     return $item->y_rank;
         // })->all();
@@ -58,16 +61,19 @@ class AllkeysController extends Controller
         
         $yranks_rep = str_replace('0', '100', $yranks);
         $granks_rep = str_replace('0', '100', $granks);
-        
-//error_log(var_dump($yranks));
+
+        // error_log(var_dump($y_array));        
+        // error_log(var_dump($yranks));
 
         return view('allkeys.index', [
             'orders' => $orders,
             'date' => $date,
-            'yranks' => $yranks_rep,
-            'granks' => $granks_rep,
+            'yranks_rep' => $yranks_rep,
+            'granks_rep' => $granks_rep,
             'checkeddays' => $huga,
             'selkey' => $selkey,
         ]);
+        
+
     }
 }

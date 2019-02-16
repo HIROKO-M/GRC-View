@@ -7,35 +7,39 @@
     <aside id="sidebar">
 
         {{-- スクロール表示　--}}
-
+        
         {!! Form::open(['method' => 'post']) !!}
         {{ csrf_field() }}
             <div class="form-group">
-                <select multiple="" name="pickupkey" class="form-control">
+                <select name="pickupkey" class="form-control">
                     @foreach ($keys as $key)
                         <option>{{ $key->grc_keyword }}</option>
                     @endforeach
                 </select>
             </div>
-            {!! Form::submit('検索') !!}
+            <div class="form-group">
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-success">選択して検索</button>
+                </div>
+            </div>
+        {!! Form::close() !!}
+         <br>
+         <br>
+         <br>
+
+        {!! Form::open(['route' => 'pickupkeys.index']) !!}
+        {{ csrf_field() }}
+            <div class="form-group">
+                <input type="text" name="pickupkey" class="form-control">
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-success">入力して検索</button>
+                </div>
+            </div>
         {!! Form::close() !!}
 
-   
 
-        {{-- チェックボックス表示　--}}
-        {{--
-                {!! Form::open(['method' => 'post']) !!}
-                {{ csrf_field() }}
-                    {!! Form::submit('検索') !!}
-                    <div class="form-group">
-                        <ol>
-                            @foreach ($keys as $key)
-                                <li><input type="checkbox" name="checkkey[]" value="{{$key->grc_keyword}}">{{ $key->grc_keyword }}</li>
-                            @endforeach
-                        </ol>
-                    </div>
-                {!! Form::close() !!}
-        --}}     
     </aside>  
       
     <div id="main">

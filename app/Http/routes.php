@@ -15,16 +15,11 @@
 Route::get('/', 'AllkeysController@index');
 Route::post('/', 'AllkeysController@index');
 Route::get('/', 'AllkeysController@allkeys');
-Route::post('/', 'AllkeysController@allkeys');
 Route::resource('/', 'AllkeysController@index');
 
 Route::get('pickupkeys', 'PickupkeysController@index');
 Route::post('pickupkeys', 'PickupkeysController@pickupkeys');
 Route::resource('pickupkeys', 'PickupkeysController@index');
-
-//Route::get('rankings', 'RankingsController@index');
-//Route::post('rankings', 'RankingsController@rankings');
-//Route::resource('rankings', 'RankingsController@index');
 
 
 
