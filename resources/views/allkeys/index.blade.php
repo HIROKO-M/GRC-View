@@ -1,10 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    
+
     @include('allkeys.allkeys', ['orders' => $orders,])
     
-
+    {{-- スクロール表示　--}}
+        
+        {!! Form::open(['method' => 'post']) !!}
+        {{ csrf_field() }}
+            <div class="form-group">
+                <select name="selgroup" class="form-control">
+                    <option>グループを選択してください。</option>
+                    @foreach ($d_groups as $d_group)
+                        <option>{{ $d_group }}</option>
+                    @endforeach
+                    <option>すべてのグループ</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-success">選択して検索</button>
+                </div>
+            </div>
+        {!! Form::close() !!}
+         <br>
+         <br>
     
 <br>
 <br>
@@ -57,9 +77,9 @@ var chart = new Chart(ctx, {
             yAxes: [{
                 ticks: {
                     reverse: true,//reverse: true, //y軸の反転(1位を上にして昇順で表示)
-                    max: 10,
+                    //max: 10,
                     min: 1,
-                    stepSize: 1,
+                    //stepSize: 1,
                     callback: function(value){
                      return value+'位';  //labelに「〜位」をつける
                     } 
