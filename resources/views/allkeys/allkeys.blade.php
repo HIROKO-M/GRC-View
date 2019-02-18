@@ -9,8 +9,7 @@ $(function () {
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Japanese.json"
         },
-        'pageLength'  : 50,
-        'paging'      : true,
+        'paging'      : false,
         'lengthChange': false,
         'searching': true,
         'ordering': true,
