@@ -80,7 +80,7 @@ var chart = new Chart(ctx, {
             yAxes: [{
                 ticks: {
                     reverse: true,//reverse: true, //y軸の反転(1位を上にして昇順で表示)
-                    max: 20,
+                    //max: 10,
                     min: 1,
                     stepSize: 1,
                     callback: function(value){

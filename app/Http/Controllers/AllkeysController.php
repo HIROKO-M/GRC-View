@@ -53,7 +53,29 @@ class AllkeysController extends Controller
 
 
         // ランキング表示のためのキーワード選択で利用
-        $ranks = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->get();
+        $d_obj = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->lists('check_date');
+        $y_obj = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->lists('y_rank');
+        $g_obj = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->lists('g_rank');
+        
+        error_log(var_dump($d_obj));
+        
+        $d_array = array();
+        $y_array = array();
+        $g_array = array();
+        $d_array = $d_obj->toArray();            //$d_obj を配列にキャスト
+        $y_array = $y_obj->toArray();            //$y_obj を配列にキャスト
+        $g_array = $g_obj->toArray();            //$g_obj を配列にキャスト
+        
+        error_log(var_dump($d_array));
+        error_log(var_dump($y_array));
+        error_log(var_dump($g_array));
+        
+        $yranks_rep = str_replace('圏外', '100', $y_array);     // Chart表示のため、「圏外」→「100」へ置き換え
+        $granks_rep = str_replace('圏外', '100', $g_array);     // Chart表示のため、「圏外」→「100」へ置き換え
+        
+        $yranks = array_map(function($value){ return (int)$value; }, $y_array);  //int型に型変更
+        $granks = array_map(function($value){ return (int)$value; }, $g_array); //int型に型変更
+        
         
         // $ranks = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)->get()->map(function ($item, $key) {
         //     return $item->y_rank;
@@ -63,7 +85,7 @@ class AllkeysController extends Controller
 
         
         
-        // これでとりあえず配列に出来る。（スマートとは言えないが）
+        /* これでとりあえず配列に出来る。（スマートとは言えないが）
         $huga = array();
         $g_array = array();
         $y_array = array();
@@ -76,11 +98,11 @@ class AllkeysController extends Controller
         $rankday = array();
         $rankday = array_unique($huga);             // check_date の重複を削除
         
-        $yranks = array_map(function($value){ return (int)$value; }, $y_array);  //int型に型変更
-        $granks = array_map(function($value){ return (int)$value; }, $g_array); //int型に型変更
+        
         
         $yranks_rep = str_replace('0', '100', $yranks);       // Chart表示のため、「0」→「100」へ置き換え
         $granks_rep = str_replace('0', '100', $granks);     // Chart表示のため、「0」→「100」へ置き換え
+        */
 
         // error_log(var_dump($y_array));        
         // error_log(var_dump($ranks));
@@ -92,7 +114,7 @@ class AllkeysController extends Controller
             'date' => $date,
             'yranks_rep' => $yranks_rep,
             'granks_rep' => $granks_rep,
-            'checkeddays' => $rankday,
+            'checkeddays' => $d_array,
             'selkey' => $selkey,
             'd_groups' => $d_groups,
         ]);

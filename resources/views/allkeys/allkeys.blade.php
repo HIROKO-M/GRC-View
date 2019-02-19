@@ -11,6 +11,8 @@ $(function () {
         'lengthChange': false,
         'searching': true,
         'ordering': true,
+        'orderable' : true,
+        'orderDataType' : 'ranking',
 
         "order": [],
 
