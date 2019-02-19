@@ -1,31 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-
-    @include('allkeys.allkeys', ['orders' => $orders,])
+   
+    <div id="wrapper" class="clearfix">
+        <div id="main_top">
+            <h3>最終データ更新日：{{$date}}</h3>
+        </div>
     
-    {{-- スクロール表示　--}}
+          <aside id="sidebar_top">
+            {{-- スクロール表示　--}}
         
-        {!! Form::open(['method' => 'post']) !!}
-        {{ csrf_field() }}
-            <div class="form-group">
-                <select name="selgroup" class="form-control">
-                    <option>グループを選択してください。</option>
-                    @foreach ($d_groups as $d_group)
-                        <option>{{ $d_group }}</option>
-                    @endforeach
-                    <option>すべてのグループ</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-10">
-                  <button type="submit" class="btn btn-success">選択して検索</button>
+            {!! Form::open(['method' => 'post']) !!}
+            {{ csrf_field() }}
+                <div class="form-group">
+                    <select name="selgroup" class="form-control">
+                        <option>グループを選択してください。</option>
+                        @foreach ($d_groups as $d_group)
+                            <option>{{ $d_group }}</option>
+                        @endforeach
+                        <option>すべてのグループ</option>
+                    </select>
                 </div>
-            </div>
-        {!! Form::close() !!}
-         <br>
-         <br>
-    
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success"  style="margin:0px; float:left;">グループ選択</button>
+                </div>
+            {!! Form::close() !!}
+      </aside> 
+    </div>  
+
+        @include('allkeys.allkeys', ['orders' => $orders,])
 <br>
 <br>
 
@@ -77,9 +80,9 @@ var chart = new Chart(ctx, {
             yAxes: [{
                 ticks: {
                     reverse: true,//reverse: true, //y軸の反転(1位を上にして昇順で表示)
-                    //max: 10,
+                    max: 20,
                     min: 1,
-                    //stepSize: 1,
+                    stepSize: 1,
                     callback: function(value){
                      return value+'位';  //labelに「〜位」をつける
                     } 

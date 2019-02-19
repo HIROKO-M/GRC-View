@@ -1,7 +1,4 @@
 
-<h3>最終データ更新日：{{$date}}</h3>
-
-
 
 
 <script>
@@ -18,7 +15,8 @@ $(function () {
         "order": [],
 
         scrollX: true,
-        scrollY: 300
+        scrollY: 300,
+
     });
 });
 </script>
