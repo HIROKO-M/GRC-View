@@ -48,7 +48,6 @@ var day= JSON.parse('<?php echo json_encode($checkeddays); ?>');
 
 var granking= JSON.parse('<?php echo json_encode($granks_rep); ?>');
 var yranking= JSON.parse('<?php echo json_encode($yranks_rep); ?>');
-
 var ranks_max= JSON.parse('<?php echo json_encode($ranks_max); ?>');
 
 

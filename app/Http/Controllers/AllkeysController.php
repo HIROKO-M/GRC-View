@@ -70,12 +70,9 @@ class AllkeysController extends Controller
         $y_array = $y_obj->toArray();            //$y_obj を配列にキャスト
         $g_array = $g_obj->toArray();            //$g_obj を配列にキャスト
         
-        //error_log(var_dump($d_array));
-        //error_log(var_dump($y_array));
-        //error_log(var_dump($g_array));
-        
-        $yranks_rep = str_replace('-', '200', $y_array);     // Chart表示のため、「-」→「101」へ置き換え
-        $granks_rep = str_replace('-', '200', $g_array);     // Chart表示のため、「-」→「101」へ置き換え
+
+        $yranks_rep = str_replace('-', '200', $y_array);     // Chart表示のため、「-」→「200」へ置き換え
+        $granks_rep = str_replace('-', '200', $g_array);     // Chart表示のため、「-」→「200」へ置き換え
         
         $yranks = array_map(function($value){ return (int)$value; }, $yranks_rep);  //int型に型変更
         $granks = array_map(function($value){ return (int)$value; }, $granks_rep); //int型に型変更
