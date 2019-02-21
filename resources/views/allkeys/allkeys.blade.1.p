@@ -1,4 +1,6 @@
 
+
+
 <script>
 $(function () {
     $('#datatables').DataTable({
@@ -81,3 +83,63 @@ $(function () {
         <p>CSVファイルをインポートしてください。</p>
         
         @endif
+        
+
+<table id="datatables" class="table table-striped" width="100%">
+    <thead>
+                    <tr>
+                        <th>サイト名</th>
+                        <th>検索キーワード</th>
+                        <th>チャート</th>
+                        <th>Yahoo順位</th>
+                        <th>Yahoo変化</th>
+                        <th>Yahoo件数</th>
+                        <th>Google順位</th>
+                        <th>Google変化</th>
+                        <th>Google件数</th>
+                    </tr>
+                </thead>
+            
+<?php
+// $orders_array = array();
+// $orders_array = $orders_array;
+?>
+<form action="" method="POST">
+<table id="datatables" class="table table-striped" width="100%">
+    <thead>
+                    <tr>
+                        <th>サイト名</th>
+                        <th>検索キーワード</th>
+                        <th>チャート</th>
+                        <th>Yahoo順位</th>
+                        <th>Yahoo変化</th>
+                        <th>Yahoo件数</th>
+                        <th>Google順位</th>
+                        <th>Google変化</th>
+                        <th>Google件数</th>
+                    </tr>
+                </thead>
+    <tbody>
+<?php
+foreach($orders_array as $order_arr){
+    
+        echo  "<tr>\n";
+        echo  "<td>".$order_arr['grc_site_name']."</td>\n";
+        echo  "<td>".$order_arr['grc_keyword']."</td>\n";
+        echo  "<td>check</td>\n";
+        echo  "<td>".$order_arr['y_rank']."</td>\n";
+        echo  "<td>".$order_arr['y_change']."</td>\n";
+        echo  "<td>".$order_arr['y_count']."</td>\n";
+        echo  "<td>".$order_arr['g_rank']."</td>\n";
+        echo  "<td>".$order_arr['g_change']."</td>\n";
+        echo  "<td>".$order_arr['g_count']."</td>\n";
+        echo  "</tr>\n";
+}
+?>
+</tbody>
+
+
+</table>
+            
+
+

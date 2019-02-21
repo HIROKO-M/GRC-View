@@ -17,6 +17,7 @@ Route::post('/', 'AllkeysController@index');
 Route::get('/', 'AllkeysController@allkeys');
 Route::resource('/', 'AllkeysController@index');
 
+
 Route::get('pickupkeys', 'PickupkeysController@index');
 Route::post('pickupkeys', 'PickupkeysController@pickupkeys');
 Route::resource('pickupkeys', 'PickupkeysController@index');

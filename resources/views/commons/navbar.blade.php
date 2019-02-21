@@ -17,6 +17,8 @@
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>CSVファイルインポート
                     </a></li>
                      <li><a href="{{ route('pickupkeys.index')}}"> Pickup キーワード詳細ページへGo！</a></li>
+                     
+                     
                 </ul>
             </div>
         </div>

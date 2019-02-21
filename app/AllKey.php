@@ -18,7 +18,11 @@ class AllKey extends Model
         'y_rank', 
         'y_change', 
         'y_count', 
-        'y_url', 
+        'y_url',
+        'g_rank',
+        'g_change',
+        'g_count',
+        'g_url',
         
         ];
     

@@ -80,8 +80,9 @@ class GdatasController extends Controller
                 	break;
      
                  	case 3:
-                	if($v=='-'){$arr['y_rank'] = '圏外';}
-                	else{$arr['y_rank'] = $v;}
+                	//if($v=='-'){$arr['y_rank'] = '圏外';}
+                	//else{$arr['y_rank'] = $v;}
+                	$arr['y_rank'] = $v;
                 	break;
  
                  	case 4:
@@ -97,8 +98,9 @@ class GdatasController extends Controller
                 	break;
  
                     case 7:
-                	if($v=='-'){$arr['g_rank'] = '圏外';}
-                	else{$arr['g_rank'] = $v;}
+                	//if($v=='-'){$arr['g_rank'] = '圏外';}
+                	//else{$arr['g_rank'] = $v;}
+                	$arr['g_rank'] = $v;
                 	break;
  
                  	case 8:

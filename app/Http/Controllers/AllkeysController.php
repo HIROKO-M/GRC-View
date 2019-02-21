@@ -14,16 +14,16 @@ class AllkeysController extends Controller
 
     public function index(Request $request)
     {
-    $date = Gdata::orderBy('created_at', 'desc')->value('check_date');
+        $date = Gdata::orderBy('created_at', 'desc')->value('check_date');
     
 //グループの選択
-    $selgroup = $request -> selgroup;
-    $allgroups = Gdata::where('check_date', '=', $date)->lists('grc_site_name'); //DBから全グループ名取得
+        $selgroup = $request -> selgroup;
+        $allgroups = Gdata::where('check_date', '=', $date)->lists('grc_site_name'); //DBから全グループ名取得
     
-    $groups = array();
-    $groups = $allgroups->toArray();            //$allgroups を配列にキャスト
+        $groups = array();
+        $groups = $allgroups->toArray();            //$allgroups を配列にキャスト
 
-    $d_groups = array();
+        $d_groups = array();
         $d_groups = array_unique($groups);             // check_date の重複を削除
 
 
@@ -45,7 +45,11 @@ class AllkeysController extends Controller
         else{
             $orders = $allorders;
         }
-
+//        $orders_array = $orders->toArray();                     //一旦オブジェクト->配列にキャスト
+//        $orders_rep = str_replace ("-", "Unranked", $orders_array);  // 一覧表示のため、「-」→「圏外」へ置き換え
+//        $orders_obj = (object) $orders_rep;                   //配列をオブジェクトに戻す
+//error_log(var_dump($orders_array));
+//error_log(var_dump($orders_obj));
 
         // ランキングチャート用キーワードを選択する
         $selkeys = $request -> all();
@@ -57,7 +61,7 @@ class AllkeysController extends Controller
         $y_obj = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->lists('y_rank');
         $g_obj = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->lists('g_rank');
         
-        error_log(var_dump($d_obj));
+        //error_log(var_dump($d_obj));
         
         $d_array = array();
         $y_array = array();
@@ -66,16 +70,31 @@ class AllkeysController extends Controller
         $y_array = $y_obj->toArray();            //$y_obj を配列にキャスト
         $g_array = $g_obj->toArray();            //$g_obj を配列にキャスト
         
-        error_log(var_dump($d_array));
-        error_log(var_dump($y_array));
-        error_log(var_dump($g_array));
+        //error_log(var_dump($d_array));
+        //error_log(var_dump($y_array));
+        //error_log(var_dump($g_array));
         
-        $yranks_rep = str_replace('圏外', '100', $y_array);     // Chart表示のため、「圏外」→「100」へ置き換え
-        $granks_rep = str_replace('圏外', '100', $g_array);     // Chart表示のため、「圏外」→「100」へ置き換え
+        $yranks_rep = str_replace('-', '200', $y_array);     // Chart表示のため、「-」→「101」へ置き換え
+        $granks_rep = str_replace('-', '200', $g_array);     // Chart表示のため、「-」→「101」へ置き換え
         
-        $yranks = array_map(function($value){ return (int)$value; }, $y_array);  //int型に型変更
-        $granks = array_map(function($value){ return (int)$value; }, $g_array); //int型に型変更
+        $yranks = array_map(function($value){ return (int)$value; }, $yranks_rep);  //int型に型変更
+        $granks = array_map(function($value){ return (int)$value; }, $granks_rep); //int型に型変更
         
+        $yranks_max = max($yranks);
+        $granks_max = max($granks);
+        
+        $ranks_max_mod = 0;
+        if ((61 <= $granks_max)) {
+            $ranks_max_mod = 100;
+        } elseif (($granks_max >= 41) && ( $granks_max <= 60)) {
+            $ranks_max_mod = 80;
+        } elseif ((($yranks_max >= 21) or ($granks_max >= 21)) && (( $yranks_max <= 40) or ( $granks_max <= 40))) {
+            $ranks_max_mod = 50;
+        } elseif ((($yranks_max >= 11) or ($granks_max >= 11)) && (( $yranks_max <= 20) or ( $granks_max <= 20))) {
+            $ranks_max_mod = 30;
+        } else {
+            $ranks_max_mod = 10;
+        }
         
         // $ranks = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)->get()->map(function ($item, $key) {
         //     return $item->y_rank;
@@ -104,19 +123,22 @@ class AllkeysController extends Controller
         $granks_rep = str_replace('0', '100', $granks);     // Chart表示のため、「0」→「100」へ置き換え
         */
 
-        // error_log(var_dump($y_array));        
-        // error_log(var_dump($ranks));
-        // error_log(var_dump($huga));
-        // error_log(var_dump($rankday));
+        // error_log(var_dump($yranks));        
+        // error_log(var_dump($granks));
+        // error_log(var_dump($yranks_max));
+        // error_log(var_dump($granks_max));
+        // error_log(var_dump($ranks_max_mod));
 
         return view('allkeys.index', [
             'orders' => $orders,
             'date' => $date,
-            'yranks_rep' => $yranks_rep,
-            'granks_rep' => $granks_rep,
+            'yranks_rep' => $yranks,
+            'granks_rep' => $granks,
             'checkeddays' => $d_array,
             'selkey' => $selkey,
             'd_groups' => $d_groups,
+//            'orders_array' => $orders_array,
+            'ranks_max' =>$ranks_max_mod,
         ]);
         
 
