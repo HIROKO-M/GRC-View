@@ -9,8 +9,11 @@ $(function () {
         lengthChange: false,
         searching: true,
         ordering: true,
-
-        order: [3, 'asc'],
+        
+        stateSave: true,
+        stateDuration: -1,
+        
+        order: [],
 
         scrollX: true,
         scrollY: 300,
