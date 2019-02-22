@@ -32,7 +32,7 @@
 
 
 
-  @include('allkeys.allkeys', ['orders' => $orders,]) 
+@include('allkeys.allkeys', ['orders' => $orders,])
 
 <br>
 <br>

@@ -21,7 +21,7 @@ $(function () {
             { 'title':'キーワード', 'data':'keyword', 'targets':1,
                 ordable: true,              // --> カラムのソート可
                 orderDataType: 'test_Keyword', // --> ソート名称
-                type: 'currency', 
+
             },
             { 'title':'ランク', 'data':'rank', 'targets':3,
                 ordable: true,              // --> カラムのソート可
@@ -40,15 +40,45 @@ $(function () {
 
   $.fn.dataTable.ext.order['test_Keyword'] = function (settings, col){
     return this.api().column(col, {order:'index'}).nodes().map(function (td, i) {
-      var value = $(td).html();
 
-      if (value == '↑'){
-       value = str.split('↑').join('-');
-       value = 0;
+      var result = $(td).html();
+
+ console.log(result);
+
+      var result_up = result.replace('↑', '+' );
+      var result_down = result.replace('↓', '-');
+      
+      var value;
+      
+// console.log(result.match(/↑\d+/));
+// console.log(result_up);
+
+      if (! result){
+         value = 1;
+
       }
+      else if (result == '↑'){
+        value = 2000;
+
+      }
+      else if (result == '↓'){
+        value = -2000;
+
+}
+      else if (result.match(/↑\d+/)){
+        value = parseInt(result_up)+100;
+
       
-      
+      }
+      else if (result.match(/↓\d+/)){
+        value = -(parseInt(result_down))-100;
+        
+
+      }
+console.log(value);
+
       return value;
+
     });
   };
 
@@ -71,13 +101,15 @@ $(function () {
 <?php
  $orders = array();
  $orders = array(   
-1=>array("saite_name"=>'+', "keyword"=>0,  "chenge"=>1,     "rank"=>'-'), 
-2=>array("saite_name"=>'-', "keyword"=>'↑1',  "chenge"=>'↓11', "rank"=>100), 
-3=>array("saite_name"=>1,   "keyword"=>'↑2',   "chenge"=>2,     "rank"=>3), 
-4=>array("saite_name"=>100, "keyword"=>'↑10',  "chenge"=>20,    "rank"=>2), 
-5=>array("saite_name"=>-1,  "keyword"=>'↓1',  "chenge"=>3,     "rank"=>10), 
-6=>array("saite_name"=>2,   "keyword"=>'↓2', "chenge"=>100,   "rank"=>20), 
-7=>array("saite_name"=>20,  "keyword"=>'↓10',   "chenge"=>100,   "rank"=>1), 
+1=>array("saite_name"=>'圏外からin',   "keyword"=>'↑', "chenge"=>100,   "rank"=>20), 
+2=>array("saite_name"=>'10UP', "keyword"=>'↑10',  "chenge"=>20,    "rank"=>2), 
+3=>array("saite_name"=>'2UP',   "keyword"=>'↑2',   "chenge"=>2,     "rank"=>3), 
+4=>array("saite_name"=>'1UP', "keyword"=>'↑1',  "chenge"=>'↓11', "rank"=>100), 
+5=>array("saite_name"=>'変化なし', "keyword"=>'',  "chenge"=>1,     "rank"=>'-'), 
+6=>array("saite_name"=>'1DOWN',  "keyword"=>'↓1',  "chenge"=>3,     "rank"=>10), 
+7=>array("saite_name"=>'2DOWN',   "keyword"=>'↓2', "chenge"=>100,   "rank"=>20), 
+8=>array("saite_name"=>'10DOWN',  "keyword"=>'↓10',   "chenge"=>100,   "rank"=>1), 
+9=>array("saite_name"=>'圏外へout',  "keyword"=>'↓',   "chenge"=>100,   "rank"=>1), 
 
 );
 //　error_log(var_dump($orders));

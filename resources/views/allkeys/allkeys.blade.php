@@ -35,7 +35,14 @@ $(function () {
                 orderDataType: 'rank_sort', // --> ソート名称
             },
 
-
+            { 'title':'Yahoo変化', 'data':'y_change', 'targets':4,
+                ordable: true,              // --> カラムのソート可
+                orderDataType: 'change_sort', // --> ソート名称
+            },
+            { 'title':'Google変化', 'data':'g_change', 'targets':7,
+                ordable: true,              // --> カラムのソート可
+                orderDataType: 'change_sort', // --> ソート名称
+            },
         ],
         order: [],
 
@@ -44,9 +51,10 @@ $(function () {
 
     });
     
-      $.fn.dataTable.ext.order['rank_sort'] = function (settings, col){
+  $.fn.dataTable.ext.order['rank_sort'] = function (settings, col){
     return this.api().column(col, {order:'index'}).nodes().map(function (td, i) {
       var value = $(td).html();
+      
       if (($(td).html()) == '-'){
        value = 200;
       }
@@ -54,6 +62,35 @@ $(function () {
     });
   };
   
+
+  $.fn.dataTable.ext.order['change_sort'] = function (settings, col){
+    return this.api().column(col, {order:'index'}).nodes().map(function (td, i) {
+
+      var result = $(td).html();
+      var result_up = result.replace('↑', '+' );    //「↑」を「+」へ置き換え
+      var result_down = result.replace('↓', '-');   //「↓」を「-」へ置き換え
+      var value;
+
+      if (! result){                               // 空欄なら「1」を代入
+         value = 1;
+      }
+      else if (result == '↑'){
+        value = 2000;
+      }
+      else if (result == '↓'){
+        value = -2000;
+      }
+      else if (result.match(/↑\d+/)){
+        value = parseInt(result_up)+100;         // 100からプラス
+      }
+      else if (result.match(/↓\d+/)){
+        value = -(parseInt(result_down))-100;   // 100からマイナス
+      }
+
+      return value;
+    });
+  };
+
 
 });
 
