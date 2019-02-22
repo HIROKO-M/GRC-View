@@ -1,5 +1,17 @@
 
 <script>
+
+function selectPosition(){  
+    var iSelectPosition = document.getElementById('hidbuttonPosition').value;
+    document.getElementById('datatables').scrollTop = iSelectPosition;  
+}  
+    function ClickSubmitBtn(){  
+        document.getElementById('hidbuttonPosition').value =   
+        document.getElementById('datatables').scrollTop;  
+    }
+
+
+
 $(function () {
     $('#datatables').DataTable({
         "language": {
@@ -13,13 +25,38 @@ $(function () {
         stateSave: true,
         stateDuration: -1,
         
+        columnDefs : [
+            { 'title':'Yahoo順位', 'data':'y_rank', 'targets':3,
+                ordable: true,              // --> カラムのソート可
+                orderDataType: 'rank_sort', // --> ソート名称
+            },
+            { 'title':'Google順位', 'data':'g_rank', 'targets':6,
+                ordable: true,              // --> カラムのソート可
+                orderDataType: 'rank_sort', // --> ソート名称
+            },
+
+
+        ],
         order: [],
 
         scrollX: true,
         scrollY: 300,
 
     });
+    
+      $.fn.dataTable.ext.order['rank_sort'] = function (settings, col){
+    return this.api().column(col, {order:'index'}).nodes().map(function (td, i) {
+      var value = $(td).html();
+      if (($(td).html()) == '-'){
+       value = 200;
+      }
+      return value;
+    });
+  };
+  
+
 });
+
 
 
 </script>

@@ -2,7 +2,7 @@
 
 @section('content')
 
- {{-- @include('allkeys.test_allkeys')   --}}
+ {{-- @include('allkeys.test_allkeys') --}}
    
     <div id="wrapper" class="clearfix">
         <div id="main_top">
@@ -32,7 +32,8 @@
 
 
 
-  @include('allkeys.allkeys', ['orders' => $orders,])
+  @include('allkeys.allkeys', ['orders' => $orders,]) 
+
 <br>
 <br>
 
