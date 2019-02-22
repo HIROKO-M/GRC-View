@@ -20,11 +20,14 @@ $(function () {
 
     });
 });
+
+
 </script>
 
         @if(count($orders) > 0)
-            
+
             <table id="datatables" class="table table-striped" width="100%">
+
                 <thead>
                     <tr>
                         <th>サイト名</th>

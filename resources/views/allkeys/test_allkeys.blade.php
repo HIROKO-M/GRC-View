@@ -34,17 +34,15 @@ $(function () {
 });
 
 
-var value = 200;
-
-
-$.fn.dataTable.ext.order['dom-date'] = function (data){
-  return this.api().column(col, {order:'index'}).nodes().map(function (td, i) {
-    if ($(td).html() == '-') {
-      return +value;
-    }
-    else return;
-  });
-}
+$(function($){ 
+  $.fn.dataTable.ext.order['test_data'] = function (settings, col){
+    return this.api().column(col, {order:'index'}).nodes().map(function (td, i) {
+      if ($(td).html() == '-'){
+          return '200';
+      }
+    });
+  };  
+});
 
 </script>
             

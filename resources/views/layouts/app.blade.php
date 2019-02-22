@@ -26,7 +26,7 @@
 <!--        <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/dataTables.bootstrap.min.js"></script>-->
         <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.18/js/jquery.dataTables.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.18/js/dataTables.bootstrap.min.js"></script>
-<!--        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/plug-ins/1.10.6/sorting/currency.js"></script>-->
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/plug-ins/1.10.6/sorting/currency.js"></script>
         <script src="//cdn.datatables.net/plug-ins/1.10.19/sorting/num-html.js"></script>        
 
         <!-- Chart plugin -->
