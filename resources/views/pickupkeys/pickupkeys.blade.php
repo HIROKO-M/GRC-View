@@ -9,7 +9,7 @@ $(function () {
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Japanese.json"
         },
-        paging: false,
+        paging: false,          // ページャー機能 無効
         lengthChange: false,
         searching   : false,    // 検索機能 無効
         ordering    : true,     // ソート機能 無効
