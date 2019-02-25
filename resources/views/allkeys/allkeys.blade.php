@@ -1,15 +1,6 @@
 
 <script>
 
-function selectPosition(){  
-    var iSelectPosition = document.getElementById('hidbuttonPosition').value;
-    document.getElementById('datatables').scrollTop = iSelectPosition;  
-}  
-    function ClickSubmitBtn(){  
-        document.getElementById('hidbuttonPosition').value =   
-        document.getElementById('datatables').scrollTop;  
-    }
-
 
 
 $(function () {
@@ -90,6 +81,11 @@ $(function () {
       return value;
     });
   };
+
+
+
+
+
 
 
 });
