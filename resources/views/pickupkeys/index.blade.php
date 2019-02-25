@@ -43,11 +43,11 @@
     </aside>  
       
     <div id="main">
-            @include('pickupkeys.pickupkeys', ['orders' => $orders,])
+            @include('pickupkeys.pickupkeys', ['orders' => $orders, 'site_name' => $site_name,])
     </div>
 
 
   </div> 
 
-    {!! $orders->render() !!}
+
 @endsection

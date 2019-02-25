@@ -20,20 +20,20 @@ $(function () {
         order: [],
 
         columnDefs : [
-            { 'title':'Yahoo順位', 'data':'y_rank', 'targets':1,
+            { 'title':'Yahoo順位', 'data':'y_rank', 'targets':2,
                 ordable: true,              // --> カラムのソート可
                 orderDataType: 'rank_sort', // --> ソート名称
             },
-            { 'title':'Google順位', 'data':'g_rank', 'targets':5,
+            { 'title':'Google順位', 'data':'g_rank', 'targets':6,
                 ordable: true,              // --> カラムのソート可
                 orderDataType: 'rank_sort', // --> ソート名称
             },
 
-            { 'title':'Yahoo変化', 'data':'y_change', 'targets':2,
+            { 'title':'Yahoo変化', 'data':'y_change', 'targets':3,
                 ordable: true,              // --> カラムのソート可
                 orderDataType: 'change_sort', // --> ソート名称
             },
-            { 'title':'Google変化', 'data':'g_change', 'targets':6,
+            { 'title':'Google変化', 'data':'g_change', 'targets':7,
                 ordable: true,              // --> カラムのソート可
                 orderDataType: 'change_sort', // --> ソート名称
             },
@@ -91,13 +91,13 @@ $(function () {
 </script>
 
 @if(count($orders) > 0)
-    <table id="datatables"  class="table table-striped" style="width:100%">
+    <table id="datatables"  class="table table-striped" style="table-layout:fixed;">
         <thead>
             <tr>
                 <th>日付</th>
                 <!--<th>サイト名</th>-->
                 <!--<th>サイトURL</th>-->
-                <!--<th>検索キーワード</th>-->
+                <th style="width:100px;">検索キーワード</th>
                 <th>Yahoo順位</th>
                 <th>Yahoo変化</th>
                 <th>Yahoo件数</th>
@@ -115,7 +115,7 @@ $(function () {
                     <td>{{ $order->check_date }}</td>
                     <!--<td>{{ $order->grc_site_name }}</td>-->
                     <!--<td>{{ $order->grc_site_url }}</td>-->
-                    <!--<td>{{ $order->grc_keyword }}</td>-->
+                    <td>{{ $order->grc_keyword }}</td>
                     <td>{{ $order->y_rank }}</td>
                     <td>{{ $order->y_change }}</td>
                     <td>{{ $order->y_count }}</td>
@@ -127,7 +127,7 @@ $(function () {
                 </tr>
             @endforeach
                     
-            {!! $orders->render() !!}
+
         </tbody>
     </table>
 

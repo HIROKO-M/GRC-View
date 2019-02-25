@@ -126,7 +126,7 @@ $(function () {
                                     <input type="hidden" name="checkkey" value="{{$order->grc_keyword}}">{{ $order->grc_keyword }}
                             </td>
                             <td>    
-                                {!! Form::submit('Check!') !!}
+                                {!! Form::submit('グラフを見る') !!}
                                 {!! Form::close() !!}
                             </td>
                             

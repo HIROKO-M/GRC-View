@@ -30,7 +30,12 @@ class PickupkeysController extends Controller
 
 // キーワード選択後の一覧表示で利用
         $pickupkeys = request()->pickupkey;
-        $orders = Gdata::orderBy('created_at', 'desc')->where('grc_keyword', $pickupkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
+//        $orders = Gdata::orderBy('created_at', 'desc')->where('grc_keyword', $pickupkeys)-> paginate(20);    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
+        $pickupkeyword = '%'.$pickupkeys.'%';
+        $orders = Gdata::orderBy('created_at', 'desc')->where('grc_keyword', 'like', $pickupkeyword)->get();    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
+
+error_log(var_dump($pickupkeys));
+
         $site_name = Gdata::orderBy('grc_keyword', 'desc')->where('grc_keyword', $pickupkeys)->value('grc_site_name');
         
         //error_log(var_dump($site_name));
