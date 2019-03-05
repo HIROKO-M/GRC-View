@@ -116,8 +116,7 @@ class GdatasController extends Controller
                 	break;
 
                   	case 11:
-                  	$vdate = str_replace('/', '-', $v);
-                	$arr['check_date'] = $vdate;
+                	$arr['check_date'] = $v;
                 	break;
                 	
                 	default:

@@ -34,7 +34,7 @@ class PickupkeysController extends Controller
         $pickupkeyword = '%'.$pickupkeys.'%';
         $orders = Gdata::orderBy('created_at', 'desc')->where('grc_keyword', 'like', $pickupkeyword)->get();    // gdates からcheck_date順にpickupkeysで洗濯されたデータのみ20個ずつ取り出し
 
-//error_log(var_dump($pickupkeys));
+error_log(var_dump($pickupkeys));
 
         $site_name = Gdata::orderBy('grc_keyword', 'desc')->where('grc_keyword', $pickupkeys)->value('grc_site_name');
         

@@ -14,8 +14,7 @@ class AllkeysController extends Controller
 
     public function index(Request $request)
     {
-//        $date = Gdata::orderBy('created_at', 'desc')->value('check_date');
-        $date = Gdata::orderBy('check_date', 'desc')->value('check_date');
+        $date = Gdata::orderBy('created_at', 'desc')->value('check_date');
     
 //グループの選択
         $selgroup = $request -> selgroup;
@@ -31,11 +30,9 @@ class AllkeysController extends Controller
 //最新データの一覧表
         
         //全データ
-//        $allorders = Gdata::orderBy('created_at', 'desc')->where('check_date', '=', $date)->get();    // gdates からcheck_date順に取り出し
-        $allorders = Gdata::orderBy('check_date', 'desc')->where('check_date', '=', $date)->get();    // gdates からcheck_date順に取り出し
+        $allorders = Gdata::orderBy('created_at', 'desc')->where('check_date', '=', $date)->get();    // gdates からcheck_date順に取り出し
         //グループ選択後のデータ
-//        $selorders = Gdata::orderBy('created_at', 'desc')->where('check_date', '=', $date)->where('grc_site_name', '=', $selgroup)->get();
-        $selorders = Gdata::orderBy('check_date', 'desc')->where('check_date', '=', $date)->where('grc_site_name', '=', $selgroup)->get();
+        $selorders = Gdata::orderBy('created_at', 'desc')->where('check_date', '=', $date)->where('grc_site_name', '=', $selgroup)->get();
 
         if(isset($selgroup)){
             if(($selgroup != 'すべてのグループ')){
@@ -57,18 +54,14 @@ class AllkeysController extends Controller
 
         // ランキングチャート用キーワードを選択する
         $selkeys = $request -> all();
-//        $selkey = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)->value('grc_keyword');
-        $selkey = Gdata::orderBy('check_date', 'desc')->whereIn('grc_keyword', $selkeys)->value('grc_keyword');
+        $selkey = Gdata::orderBy('created_at', 'desc')->whereIn('grc_keyword', $selkeys)->value('grc_keyword');
 
 
         // ランキング表示のためのキーワード選択で利用
-//        $d_obj = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->lists('check_date');
-//        $y_obj = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->lists('y_rank');
-//        $g_obj = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->lists('g_rank');
-        $d_obj = Gdata::orderBy('check_date', 'asc')->whereIn('grc_keyword', $selkeys)->lists('check_date');
-        $y_obj = Gdata::orderBy('check_date', 'asc')->whereIn('grc_keyword', $selkeys)->lists('y_rank');
-        $g_obj = Gdata::orderBy('check_date', 'asc')->whereIn('grc_keyword', $selkeys)->lists('g_rank');
-         
+        $d_obj = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->lists('check_date');
+        $y_obj = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->lists('y_rank');
+        $g_obj = Gdata::orderBy('created_at', 'asc')->whereIn('grc_keyword', $selkeys)->lists('g_rank');
+        
         //error_log(var_dump($d_obj));
         
         $d_array = array();
