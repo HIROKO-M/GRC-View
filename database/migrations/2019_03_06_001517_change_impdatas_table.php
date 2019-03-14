@@ -12,6 +12,8 @@ class ChangeImpdatasTable extends Migration
      */
     public function up()
     {
+//        ALTER TABLE 'impdates' ALTER COLUMN 'check_date' TYPE date;
+        
         Schema::table('impdatas', function (Blueprint $table) {
             $table->date('check_date')->change();
         });
