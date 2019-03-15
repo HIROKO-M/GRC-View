@@ -16,8 +16,9 @@ class ChangeImpdatasTable extends Migration
             $table->string('y_rank')->nullable()->change();
             $table->string('g_rank')->nullable()->change();
             $table->date('check_date')->change();
-            $table->integer('y_count')->nullable()->change();
-            $table->integer('g_count')->nullable()->change();
+            $table->integer('y_count')->nullable()->unsigned()->index()->change();
+            $table->integer('g_count')->nullable()->unsigned()->index()->change();
+
 
 
         });
