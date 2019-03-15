@@ -18,9 +18,6 @@ class ChangeImpdatasTable extends Migration
             $table->date('check_date')->change();
             $table->integer('y_count')->nullable()->unsigned()->index()->change();
             $table->integer('g_count')->nullable()->unsigned()->index()->change();
-
-
-
         });
     }
 

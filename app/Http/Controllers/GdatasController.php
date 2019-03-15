@@ -90,7 +90,7 @@ class GdatasController extends Controller
                 	break;
  
                  	case 5:
-                 	if($v==''){$arr['y_count'] = 0;}
+                 	if($v==''){$arr['y_count'] = null;}
                  	$arr['y_count'] = $v;
                 	break;
  
@@ -107,7 +107,7 @@ class GdatasController extends Controller
                 	break;
  
                  	case 9:
-                	if($v==''){$arr['g_count'] = 0;}
+                	if($v==''){$arr['g_count'] = null;}
                  	$arr['g_count'] = $v;
                 	break;
  

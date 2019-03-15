@@ -69,7 +69,7 @@ class AllkeysController extends Controller
         $y_obj = Gdata::orderBy('check_date', 'asc')->whereIn('grc_keyword', $selkeys)->lists('y_rank');
         $g_obj = Gdata::orderBy('check_date', 'asc')->whereIn('grc_keyword', $selkeys)->lists('g_rank');
           
-        //error_log(var_dump($d_obj));
+error_log(var_dump($d_obj));
         
         $d_array = array();
         $y_array = array();
