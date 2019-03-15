@@ -19,7 +19,7 @@ class ChangeImpdatasTable extends Migration
             $table->integer('y_count')->nullable()->unsigned()->index()->change();
             $table->integer('g_count')->nullable()->unsigned()->index()->change();
             
-            DB::statement('ALTER TABLE `impdatas` ALTER `check_date` TYPE DATE;');
+            DB::statement('ALTER TABLE "impdatas" ALTER "check_date" TYPE DATE;');
         });
     }
 
